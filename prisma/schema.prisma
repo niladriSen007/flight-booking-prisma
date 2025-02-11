@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Airplane {
-  id        Int     @id @default(autoincrement())
-  modelName String   @db.VarChar(200)
+  id        Int      @id @default(autoincrement())
+  modelName String   @db.VarChar(200) 
   capacity  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
