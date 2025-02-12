@@ -1,8 +1,8 @@
 import { StatusCodes } from "http-status-codes";
-import { Prisma } from "../database/connection";
-import { CreateAirplaneTypes } from "../types";
-import { UpdateAirplaneRequest } from "../types/airplane-types";
-import { GlobalErrorResponse } from "../utils";
+import { Prisma } from "../../database/connection";
+import { CreateAirplaneTypes } from "../../types";
+import { UpdateAirplaneRequest } from "../../types/airplane-types";
+import { GlobalErrorResponse } from "../../utils";
 
 export class AirplaneRepository {
   async createAirplane(data: CreateAirplaneTypes) {

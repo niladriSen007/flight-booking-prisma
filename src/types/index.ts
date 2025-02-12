@@ -1,6 +1,11 @@
-import { CreateAirplaneRequest, CreateAirplaneTypes } from "./airplane-types";
+import { CreateAirplaneRequest, CreateAirplaneTypes,UpdateAirplaneRequest } from "./airplane-types";
+import { CreateCityRequest,UpdateCityRequest,CreateCityTypes } from "./city-types";
 
 export {
     CreateAirplaneTypes,
-    CreateAirplaneRequest
+    CreateAirplaneRequest,
+    UpdateAirplaneRequest,
+    CreateCityRequest,
+    UpdateCityRequest,
+    CreateCityTypes
 }

@@ -1,5 +1,7 @@
-import { AirplaneRepository } from './airplane-repository';
+import { AirplaneRepository } from './airplane/airplane-repository';
+import { CityRepository } from './city/city-repository';
 
-export const airplaneRepositories =  {
-  airplaneRepository : new AirplaneRepository()
+export const repositories =  {
+  airplaneRepository : new AirplaneRepository(),
+  cityRepository: new CityRepository()
 }

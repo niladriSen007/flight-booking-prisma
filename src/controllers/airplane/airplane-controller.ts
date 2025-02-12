@@ -1,6 +1,6 @@
-import { Response } from "express";
+import { Request, Response } from "express";
 import { AirplaneService } from "../../services/airplane/airplane-service";
-import { CreateAirplaneRequest } from "../../types";
+import { CreateAirplaneRequest, UpdateAirplaneRequest } from "../../types";
 import { errorFormat, successResponseFormat } from "../../utils";
 import { StatusCodes } from "http-status-codes"
 
@@ -18,7 +18,7 @@ export class AirplaneController {
     }
   }
 
-  public async getAirplane(req: any, res: Response) {
+  public async getAirplane(req: Request, res: Response) {
     try {
       const airplane = await this.airplaneService.getAirplane(parseInt(req?.params?.id));
       successResponseFormat.data = airplane!;
@@ -31,7 +31,7 @@ export class AirplaneController {
   }
 
 
-  public async getAllAirplanes(req: any, res: Response) {
+  public async getAllAirplanes(req: Request, res: Response) {
     try {
       const airplanes = await this.airplaneService.getAllAirplanes();
       successResponseFormat.data = airplanes;
@@ -44,7 +44,7 @@ export class AirplaneController {
   }
 
 
-  public async updateAirplane(req: any, res: Response) {
+  public async updateAirplane(req: UpdateAirplaneRequest, res: Response) {
     try {
       const airplane = await this.airplaneService.updateAirplane(parseInt(req?.params?.id), req?.body);
       successResponseFormat.data = airplane;
@@ -56,7 +56,7 @@ export class AirplaneController {
     }
   }
 
-  public async deleteAirplane(req: any, res: Response) {
+  public async deleteAirplane(req: Request, res: Response) {
     try {
       await this.airplaneService.deleteAirplane(parseInt(req?.params?.id));
       successResponseFormat.message = 'Airplane deleted successfully';

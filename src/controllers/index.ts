@@ -1,7 +1,10 @@
 import { AirplaneController } from "./airplane/airplane-controller";
-import { airplaneServices } from "../services";
+import { services } from "../services";
+import { CityController } from "./city/city-controller";
 
-const { airplaneService } = airplaneServices;
-export const airplaneControllers = {
-  airplaneController: new AirplaneController(airplaneService)
+const { airplaneService,cityService } = services;
+
+export const controllers = {
+  airplaneController: new AirplaneController(airplaneService),
+  cityController: new CityController(cityService)
 };

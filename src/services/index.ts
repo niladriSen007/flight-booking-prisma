@@ -1,7 +1,9 @@
 import { AirplaneService } from "./airplane/airplane-service"
-import { airplaneRepositories } from "../repository"
+import { repositories } from "../repository"
+import { CityService } from "./city/city-service";
 
-const { airplaneRepository } = airplaneRepositories;
-export const airplaneServices = {
-  airplaneService: new AirplaneService(airplaneRepository)
+const { airplaneRepository,cityRepository } = repositories;
+export const services = {
+  airplaneService: new AirplaneService(airplaneRepository),
+  cityService: new CityService(cityRepository)
 };

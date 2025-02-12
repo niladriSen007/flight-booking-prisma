@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { AirplaneRepository } from "../../repository/airplane-repository";
+import { AirplaneRepository } from "../../repository/airplane/airplane-repository";
 import { CreateAirplaneRequest } from "../../types";
 import { UpdateAirplaneRequest } from "../../types/airplane-types";
 import { GlobalErrorResponse } from "../../utils";
@@ -12,7 +12,9 @@ export class AirplaneService {
     try {
       return await this.airplaneRepository.createAirplane(data);
     } catch (error: any) {
-      throw new Error(error?.message ?? 'Something went wrong while creating airplane');
+      throw new GlobalErrorResponse(error?.message
+        ?? 'Something went wrong while creating airplane',
+        StatusCodes?.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -23,7 +25,9 @@ export class AirplaneService {
       if (error?.statusCode === StatusCodes?.NOT_FOUND) {
         throw new GlobalErrorResponse('Airplane not found', StatusCodes?.NOT_FOUND);
       }
-      throw new Error(error?.message ?? 'Something went wrong while getting airplane');
+      throw new GlobalErrorResponse(error?.message
+        ?? 'Something went wrong while getting airplane',
+        StatusCodes?.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -31,7 +35,9 @@ export class AirplaneService {
     try {
       return await this.airplaneRepository.getAllAirplanes();
     } catch (error: any) {
-      throw new Error(error?.message ?? 'Something went wrong while getting airplanes');
+      throw new GlobalErrorResponse(error?.message
+        ?? 'Something went wrong while getting airplanes'
+        , StatusCodes?.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -42,7 +48,7 @@ export class AirplaneService {
       if (error?.statusCode === StatusCodes?.NOT_FOUND) {
         throw new GlobalErrorResponse('Airplane not found', StatusCodes?.NOT_FOUND);
       }
-      throw new Error(error?.message ?? 'Something went wrong while updating airplane');
+      throw new GlobalErrorResponse(error?.message ?? 'Something went wrong while updating airplane', StatusCodes?.INTERNAL_SERVER_ERROR);
     }
   }
 
@@ -53,7 +59,7 @@ export class AirplaneService {
       if (error?.statusCode === StatusCodes?.NOT_FOUND) {
         throw new GlobalErrorResponse('Airplane not found', StatusCodes?.NOT_FOUND);
       }
-      throw new Error(error?.message ?? 'Something went wrong while deleting airplane');
+      throw new GlobalErrorResponse(error?.message ?? 'Something went wrong while deleting airplane', StatusCodes?.INTERNAL_SERVER_ERROR);
     }
   }
 
