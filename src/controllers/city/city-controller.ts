@@ -9,7 +9,7 @@ export class CityController {
 
   public async createCity(req: CreateCityRequest, res: Response) {
     try {
-      const city = await this.cityService.createCity(req.body);
+      const city = await this.cityService.createCity(req?.body);
       successResponseFormat.data = city;
       successResponseFormat.message = 'City created successfully';
       res.status(StatusCodes?.CREATED).send(successResponseFormat);
