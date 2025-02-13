@@ -1,7 +1,7 @@
 import { Request } from "express";
 
 export interface CreateCityRequest extends Request {
-  name: string;
+  body : CreateCityTypes;
 }
 export interface UpdateCityRequest extends Request {
   name: string;

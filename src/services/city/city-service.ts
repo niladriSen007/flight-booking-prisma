@@ -1,12 +1,12 @@
 import { StatusCodes } from "http-status-codes";
 import { CityRepository } from "../../repository/city/city-repository";
+import { CreateCityTypes } from "../../types";
 import { GlobalErrorResponse } from "../../utils";
-import { CreateCityRequest } from "../../types";
 
 export class CityService {
   constructor(private readonly cityRepository: CityRepository) { }
 
-  public async createCity(city: CreateCityRequest) {
+  public async createCity(city: CreateCityTypes) {
     try {
       return await this.cityRepository.createCity(city);
     } catch (error: any) {
